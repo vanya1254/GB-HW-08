@@ -2,9 +2,10 @@ def main_menu():
     print('\nВыберите команду:')     
     menu_list = ['Выбрать класс',
                  'Выбрать предмет',
+                 'Выбрать ученика',
+                 'Поставить оценку ученику',
+                 'Показать всех учеников класса по предмету',
                  'Показать всех учеников класса',
-                 'Кто пойдет к доске?',
-                 'На какую оценку ответил ученик?',
                  'Сохранить изменения',
                  'Закрыть'
                 ]
@@ -39,7 +40,7 @@ def input_lesson(list_):
 
 
 def show_lesson(dict_):
-    print(f'\nСписок учеников класса по предмету:')
+    print(f'\nСписок учеников класса по предмету:\n')
     for k, v in dict_.items():
         print(f'\t{k}: {list(map(int, v))}')
 
@@ -52,8 +53,42 @@ def show_all(dict_):
             print(f'\t\t{k}: {list(map(int, v))}')
 
 
-def find_pupil(choice):
+def input_pupil():
     user_pupil = input(f'\nВведите фамилию и имя ученика ("Иванов Иван") => ')
-    return user_pupil, choice
+    return user_pupil
 
 
+def show_pupil(pupil):
+    name, marks = pupil
+    print(f'\nВаш ученик:')
+    print(f'\t{name}: {list(map(int, marks))}')
+
+
+def show_status_class(bool):
+    if bool:
+        print(f'\nКласс выбран')
+    else:
+        print(f'\nКласс еще не выбран')
+
+
+def show_status_lesson(bool):
+    if bool:
+        print(f'\nПредмет выбран')
+    else:
+        print(f'\nПредмет еще не выбран')
+
+
+def show_status_pupil(bool):
+    if bool:
+        print(f'\nУченик выбран')
+    else:
+        print(f'\nУченик еще не выбран')
+
+
+def input_mark():
+    user_mark = input(f'\nВведите оценку ("5") => ')
+    return user_mark
+
+
+def show_exit():
+    print('\n\nПрограмма закрыта')
